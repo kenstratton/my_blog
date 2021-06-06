@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<title>PIC HUB - {% block title %}{{title}}{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='stylesheet/style.css') }}">
+<script src='https://kit.fontawesome.com/8989297e1e.js' crossorigin='anonymous'></script>
+<html>
+    <body>
+        <header>
+            <div id='header-content'>
+                <a id='top-link' href='/'>PIC HUB</a>
+                <a class='entry-link' href='/sign_in'>Sign in</a>
+                <span class='separater'>/</span>
+                <a class='entry-link' href='/sign_up'>Sign up</a>
+            </div>
+        </header>
+
+        {% block content %}{% endblock %}
+
+        <script src='/static/js/main.js'></script>
+    </body>
+</html>
