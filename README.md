@@ -2,13 +2,14 @@
 Application where favorite pictures are shared.
 Application URL: https://my-blog1357.herokuapp.com/
 ## Design
-Its actual design has been undecided yet. 
+<img width="1349" alt="Screen Shot 2021-06-08 at 20 31 20" src="https://user-images.githubusercontent.com/77530003/121177619-95dffa00-c898-11eb-88c9-816d89cdaaff.png">
+
 ### what users can do with the application
     ・Login and Logout
     ・Post blogs
     ・Edit blogs
 ## Reauirements
-Below are project requirements and details of how I achieved them.
+Below are some demonstrations for understanding project requirements.
 
 ### Code oraganization
 Code organization helps the whole program to be compact and easily readable. At this juncture, I feel my skill should be improved more to decrease repeated parts in the program code. 
