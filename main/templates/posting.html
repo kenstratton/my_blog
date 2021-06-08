@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div id='sign-wrapper'>
+        <div class='page-title'>{{title}} -</div>
+        {% if type=='add_post' %}
+            <form action='/{{type}}' method='POST'>
+                {% if error %}
+                    <span class='error'>{{error}}</span>
+                {% endif %}
+                <input type='text' name='title' placeholder='Title' autocomplete='off' required>
+                <textarea name='detail'style='height:230px;width:350px;resize:none;' required></textarea>
+                <input type='submit' class='submit' value='Submit'>
+            </form>
+        {% else %}
+            <form action='/{{post.id}}/{{type}}' method='POST'>
+                {% if error %}
+                    <span class='error'>{{error}}</span>
+                {% endif %}
+                <input type='text' name='title' value="{{request.form['title'] or post.title}}" placeholder='Title' autocomplete='off' required>
+                <textarea name='detail' required>{{ request.form['detail'] or post.detail }}</textarea>
+                <input type='submit' class='submit' value='Submit'>
+            </form>
+        {% endif %}
+    </div>
+{% endblock %}

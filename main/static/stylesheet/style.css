@@ -3,8 +3,8 @@ html {
     font-family: "Helvetica Neue";
     font-weight: normal;
     height: 100vh; }
-body { margin: auto; height: 100%; }
-a { text-decoration: none; position: relative; }
+body { background: #f6f6f6; margin: auto; height: 100%; }
+a { color: #123a75; text-decoration: none; position: relative; }
 a::after {
  height: 1px;
  width: 0;
@@ -13,37 +13,61 @@ a::after {
  position: absolute; left: 50%; bottom: 11px;
  transition: .4s all; }
 a:hover::after { width: 100%; left: 0; }
+span { color: white; }
 
 /* header */
 header {
     height: 50px;
     width: 100%;
-    background-color: white;
+    background: white;
     opacity: 80%;
     padding: 0 13px;
     position: fixed;
     z-index: 1; }
-#header-content { display: flex; line-height: 50px; padding: 0 13px;}
-#top-link { color: #123a75; font-size: 24px; margin-right: auto;}
-.entry-link { color: #123a75; font-size: 18px; }
-.separater { color: #123a75; margin: 0 5px; }
-
-/* picture */
-#posts-wrapper { width: 100%; padding-top: 60px; }
-.post { width: fit-content; margin: 0 auto 30px; position: relative; }
-.pic { box-shadow: 0 0 6px #c5c5c5; }
-.text-box {
-    color: white;
-    font-size: 18px;
-    text-shadow: 1px 1px 0px #545454;
+#header-content { line-height: 50px; padding: 0 13px; display: flex; }
+#top-link { font-size: 24px; margin-right: auto;}
+.entry-link { font-size: 18px; margin: 0 5px; }
+.separater { color: #123a75; }
+.message {
+    width: fit-content;
+    color: #666666;
+    margin: auto;
     position: absolute;
-    right: 10px;
-    bottom: 8px; }
+    left: 0;
+    right: 0; }
 
-/* sign in and out */
+/* post */
+#posts-wrapper { width: 100%; padding-top: 60px; }
+.post {
+    width: 500px;
+    border: solid 1px #123a75;
+    border-radius: 5px;
+    padding: 30px;
+    margin: 0 auto 25px;
+    position: relative; }
+.post-title { font-size: 30px; border-bottom: solid 1px #123a75; }
+.post-date { color: #a2a2a2; font-style: italic; }
+.post-detail {
+    font-size: 18px;
+    padding: 0 10px;
+    margin-top: 15px;
+    white-space: pre-wrap; }
+.empty-post {
+    margin: 100px auto;
+    font-size: 29px;
+    color: #093371;
+    font-weight: lighter;
+    width: fit-content; }
+.post-links {
+    position: absolute;
+    top: 30px;
+    right: 30px; }
+.post-links a::after { height: 0px; }
+
+/* froms for sign in/out and posting */
 #sign-wrapper { width: 100%; padding-top: 180px; display: flex; }
 .page-title {
-    margin: 0 8% 0 24%;
+    margin: 0 8% 0 17%;
     font-size: 60px;
     font-weight: lighter;
     color: #093371; }
@@ -51,7 +75,9 @@ form {
     display: block;
     padding: 30px 45px 5px;
     border: solid 1px #093371;
-    border-radius: 10px; }
+    border-radius: 10px;
+    position: relative; }
+.error { color: red; position: absolute; top: -20px; left: 0px;}
 input {
     height: 30px;
     width: 235px;
@@ -61,6 +87,7 @@ input {
     border-bottom: solid 1px #093371;
     outline: none;
     display: block; }
+textarea { height:230px;width:350px;resize:none; }
 .submit {
     width: 70px;
     background: #3969af;

@@ -2,3 +2,4 @@ venv/
 *.pyc
 pic_hub.db
 .env
+key.py

@@ -1,10 +1,7 @@
 from flask import Flask
-# from flask_sqlalchemy import SQLAlchemy
-
+from main import key
 
 app = Flask(__name__)
-app.config.from_object('main.config')
-
-# db = SQLAlchemy(app)
+app.secret_key = key.SECRET_KEY
 
 import main.views

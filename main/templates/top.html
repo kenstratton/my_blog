@@ -1,21 +1,22 @@
 {% extends 'layout.html' %}
-
-
 {% block content %}
     <div id='posts-wrapper'>
-        <div class='post'>
-            <img class='pic' src="/static/images/sakura.jpg" height="330" width="500">
-            <div class='text-box'>
-                <span class='pic-title'>sakura</span>
-                <span class='poster'>by Jhon</span>
+        {% if not user.posts %}
+            <div class='empty-post'>There is no post.</div>
+        {% endif %}
+        {% for post in user.posts %}
+            <div class='post'>
+                <div class='post-title'>{{post.title}}</div>
+                <div class='post-date'>{{post.created_at.strftime('%Y/%m/%d')}}</div>
+                <div class='post-detail'>{{post.detail}}</div>
+                <div class='post-links'>
+                    <a href="{{ url_for('update', id=post.id) }}"><i class='far fa-edit'></i></a>
+                    <a href="{{ url_for('delete', id=post.id) }}" onclick="return confirm('Are you sure to delete the post \'{{post.title}}\'?');">
+                        <i class='far fa-trash-alt'></i></a>
+                </div>
             </div>
-        </div>
-        <div class='post'>
-            <img class='pic' src="/static/images/sakura.jpg" height="330" width="500">
-        </div>
-        <div class='post'>
-            <img class='pic' src="/static/images/sakura.jpg" height="330" width="500">
-        </div>
+        {% endfor %}
+
     </div>
 
 {% endblock %}
