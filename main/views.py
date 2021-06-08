@@ -1,7 +1,7 @@
 from flask import render_template, url_for, redirect, session, request, Response
 import os
 from main import app
-import key
+from main import key
 from models.classes import User, Post
 from models.database import db_session
 from hashlib import sha256
