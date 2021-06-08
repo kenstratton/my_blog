@@ -1,11 +1,10 @@
 from flask import render_template, url_for, redirect, session, request, Response
 import os
 from main import app
-from main import key
+import key
 from models.classes import User, Post
 from models.database import db_session
 from hashlib import sha256
-from werkzeug.utils import secure_filename
 
 # Top page listing up user's blogs
 @app.route('/')
