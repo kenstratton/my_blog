@@ -2,6 +2,7 @@
 {% block content %}
     <div id='sign-wrapper'>
         <div class='page-title'>{{title}} -</div>
+        <!-- Sign in/up form  -->
         <form action='/{{type}}' method='POST'>
             {% if error %}
                 <span class='error'>{{error}}</span>

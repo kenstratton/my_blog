@@ -7,6 +7,7 @@ from models.database import Base
 class User(Base):
     __tablename__ = "user"
 
+    # Attributes
     id = Column(Integer, primary_key=True)
     name = Column(String(30), unique=True)
     hashed_password = Column(String(128))
@@ -23,6 +24,7 @@ class User(Base):
 class Post(Base):
     __tablename__ = 'word'
 
+    # Attributes
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('user.id'))
     title = Column(String(50))

@@ -6,6 +6,7 @@
     <body>
         <header>
             <div id='header-content'>
+                <!-- header message for user activites -->
                 {% if status == 'sign' %}
                     <div class='message'>You signed in.</div>
                 {% elif status == 'sign_out' %}
@@ -17,6 +18,8 @@
                 {% elif status == 'delete' %}
                     <div class='message'>Post '{{post_title}}' has been deleted.</div>
                 {% endif %}
+
+                <!-- Menu links -->
                 <div class='message'>{{message}}</div>
                 {% if 'user_name' in session %}
                     <a id='top-link' href='/'>{{user.repr()}}'s BLOG</a>
@@ -33,6 +36,5 @@
 
         {% block content %}{% endblock %}
 
-        <script src='/static/js/main.js'></script>
     </body>
 </html>

@@ -2,6 +2,7 @@
 {% block content %}
     <div id='sign-wrapper'>
         <div class='page-title'>{{title}} -</div>
+        <!-- Posting form in adding -->
         {% if type=='add_post' %}
             <form action='/{{type}}' method='POST'>
                 {% if error %}
@@ -11,6 +12,7 @@
                 <textarea name='detail'style='height:230px;width:350px;resize:none;' required></textarea>
                 <input type='submit' class='submit' value='Submit'>
             </form>
+        <!-- Posting form in updating -->
         {% else %}
             <form action='/{{post.id}}/{{type}}' method='POST'>
                 {% if error %}

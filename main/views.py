@@ -88,6 +88,7 @@ def add_post():
         return redirect(url_for('top', status='add', post_title=post.title))
     return render_template('posting.html', type='add_post', title='Add post', user=user)
 
+# Update info of a post instance
 @app.route('/<int:id>/update', methods=['GET', 'POST'])
 def update(id):
     user = User.query.filter_by(name=session['user_name']).first()
@@ -105,6 +106,7 @@ def update(id):
         return redirect(url_for('top', status='update', post_title=post.title))
     return render_template('posting.html', type='update', title='Update post', user=user, post=post)
 
+# Deletes a post instance from database
 @app.route('/<int:id>/delete')
 def delete(id):
     post = Post.query.filter_by(id=id).first()

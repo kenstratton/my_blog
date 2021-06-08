@@ -4,6 +4,7 @@
         {% if not user.posts %}
             <div class='empty-post'>There is no post.</div>
         {% endif %}
+        <!-- Lists User's Posts -->
         {% for post in user.posts %}
             <div class='post'>
                 <div class='post-title'>{{post.title}}</div>
@@ -18,5 +19,4 @@
         {% endfor %}
 
     </div>
-
 {% endblock %}
