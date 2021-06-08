@@ -1,5 +1,5 @@
 venv/
 *.pyc
-pic_hub.db
+my_blog.db
 .env
 key.py
