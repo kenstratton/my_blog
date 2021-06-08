@@ -12,6 +12,7 @@ def top(status=None, post_title=None):
     posts = Post.query.all()
     status = request.args.get('status')
     post_title = request.args.get('post_title')
+    # If not signed in, transfers to a sign-in page
     if 'user_name' in session:
         user = User.query.filter_by(name=session['user_name']).first()
         return render_template('top.html', type='top', title='Top', session=session, user=user, status=status, post_title=post_title)
@@ -22,7 +23,9 @@ def top(status=None, post_title=None):
 @app.route('/sign_in', methods=['GET', 'POST'])
 def sign_in():
     status = request.args.get('status')
+    # Deals with User's request to sign in
     if request.method == 'POST':
+        # Tries to pull date of user instance based of actual user input
         user_name = request.form['user_name']
         user = User.query.filter_by(name=user_name).first()
         if user:
@@ -35,14 +38,17 @@ def sign_in():
                 return render_template('sign.html', type='sign_in', title='Sign in', error='Password is wrong.')
         else:
             return render_template('sign.html', type='sign_in', title='Sign in', error='User doesn\'t exist.')
+    # If signed in already, transfers to a top page
     if 'user_name' in session:
         return redirect(url_for('top'))
+    # Output HTML form
     return render_template('sign.html', type='sign_in', title='Sign in', error='', status=status)
         
 
-# Sign up page, and deals with sign up request
+# Sign up page, and deals with a request to sign up
 @app.route('/sign_up', methods=['GET', 'POST'])
 def sign_up():
+    # Deals with User's request to sign up
     if request.method == 'POST':
         user_name = request.form['user_name']
         if not user_name:
@@ -60,8 +66,10 @@ def sign_up():
             db_session.commit()
             session['user_name'] = user_name
             return redirect(url_for('top', status='sign'))
+    # If signed in already, transfers to a top page
     if 'user_name' in session:
         return redirect(url_for('top'))
+    # Output HTML form
     return render_template('sign.html', type='sign_up', title='Sign up', error='')
 
 # Execute sign out
@@ -74,6 +82,7 @@ def sign_out():
 @app.route('/add_post', methods=['GET', 'POST'])
 def add_post():
     user = User.query.filter_by(name=session['user_name']).first()
+    # Deals with User's a request to upload a post
     if request.method == 'POST':
         user_id = user.id
         title = request.form['title']
@@ -86,13 +95,16 @@ def add_post():
         db_session.add(post)
         db_session.commit()
         return redirect(url_for('top', status='add', post_title=post.title))
+    # Output HTML form
     return render_template('posting.html', type='add_post', title='Add post', user=user)
 
 # Update info of a post instance
 @app.route('/<int:id>/update', methods=['GET', 'POST'])
 def update(id):
+    # Tries to pull date of user and post instances based of actual user input
     user = User.query.filter_by(name=session['user_name']).first()
     post = Post.query.filter_by(id=id).first()
+    # Deals with User's a request to update a post
     if request.method == 'POST':
         title = request.form['title']
         detail = request.form['detail']
@@ -104,6 +116,7 @@ def update(id):
         post.detail = detail
         db_session.commit()
         return redirect(url_for('top', status='update', post_title=post.title))
+    # Output HTML form
     return render_template('posting.html', type='update', title='Update post', user=user, post=post)
 
 # Deletes a post instance from database
