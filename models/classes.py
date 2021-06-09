@@ -5,13 +5,13 @@ from models.database import Base
 
 # User class holds info of an actual user and relationships with multiple posts.
 class User(Base):
-    __tablename__ = "user"
+    __tablename__ = 'user'
 
     # Attributes
     id = Column(Integer, primary_key=True)
     name = Column(String(30), unique=True)
     hashed_password = Column(String(128))
-    posts = relationship("Post", backref='user')
+    posts = relationship('Post', backref='user')
 
     def __init__(self, name=None, hashed_password=None):
         self.name = name
