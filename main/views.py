@@ -1,8 +1,8 @@
 from flask import render_template, url_for, redirect, session, request, Response
 from main import app
-from main import db
 from main import key
-from main.models  import User, Post
+from models.classes import User, Post
+from models.database import db_session
 from hashlib import sha256
 
 # Top page listing up user's blogs
@@ -61,8 +61,8 @@ def sign_up():
                 return render_template('sign.html', type='sign_up', title='Sign up', error='Password is missed.')
             hashed_password = sha256((user_name + password + key.SALT).encode('utf-8')).hexdigest()
             user = User(user_name, hashed_password)
-            db.session.add(user)
-            db.session.commit()
+            db_session.add(user)
+            db_session.commit()
             session['user_name'] = user_name
             return redirect(url_for('top', status='sign'))
     # If signed in already, transfers to a top page
@@ -91,8 +91,8 @@ def add_post():
         if not detail:
             return render_template('posting.html', type='add_post', title='Add post', error='Detail is missed')
         post = Post(user_id, title, detail)
-        db.session.add(post)
-        db.session.commit()
+        db_session.add(post)
+        db_session.commit()
         return redirect(url_for('top', status='add', post_title=post.title))
     # Output HTML form
     return render_template('posting.html', type='add_post', title='Add post', user=user)
@@ -113,7 +113,7 @@ def update(id):
             return render_template('posting.html', type='add_post', title='Add post', error='Detail is missed')
         post.title = title
         post.detail = detail
-        db.session.commit()
+        db_session.commit()
         return redirect(url_for('top', status='update', post_title=post.title))
     # Output HTML form
     return render_template('posting.html', type='update', title='Update post', user=user, post=post)
@@ -122,6 +122,6 @@ def update(id):
 @app.route('/<int:id>/delete')
 def delete(id):
     post = Post.query.filter_by(id=id).first()
-    db.session.delete(post)
-    db.session.commit()
+    db_session.delete(post)
+    db_session.commit()
     return redirect(url_for('top', status='delete', post_title=post.title))
