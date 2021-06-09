@@ -6,7 +6,7 @@ if __name__ == "__main__" and __package__ is None:
     __package__ = "tests"
 
 from models.classes import User, Post
-from models.database import db_session
+from main import db
 from main import key
 from hashlib import sha256
 import random, string
