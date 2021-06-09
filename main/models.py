@@ -1,10 +1,10 @@
 from sqlalchemy import *
 from sqlalchemy.orm import relationship
 from datetime import datetime
-from models.database import Base
+from main import db
 
 # User class holds info of an actual user and relationships with multiple posts.
-class User(Base):
+class User(db.Model):
     __tablename__ = "user"
 
     # Attributes
@@ -21,7 +21,7 @@ class User(Base):
         return self.name
 
 # Post class is crafted off by and belongs to an actual user.
-class Post(Base):
+class Post(db.Model):
     __tablename__ = 'word'
 
     # Attributes
@@ -35,3 +35,6 @@ class Post(Base):
         self.user_id = user_id
         self.title = title
         self.detail = detail
+
+def db_init():
+    db.create_all()

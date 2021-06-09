@@ -3,3 +3,4 @@ venv/
 *.db
 .env
 key.py
+config.py

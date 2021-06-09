@@ -5,10 +5,10 @@ if __name__ == "__main__" and __package__ is None:
     path.append(dir(path[0]))
     __package__ = "tests"
 
-from models.classes import User, Post
-from models.database import db_session
-from hashlib import sha256
+from main.models import User, Post
+from main import db
 from main import key
+from hashlib import sha256
 import random, string
 
 # Creates a name with random strings.
@@ -31,8 +31,8 @@ def run_db_test():
 
     # Insert User instance into database
     try:
-        db_session.add(user)
-        db_session.commit()
+        db.session.add(user)
+        db.session.commit()
         user = User.query.filter_by(name=user_name).first()
         print(user,'\n',user.name,'\n',user.hashed_password,'\n')
         success += 1
@@ -58,8 +58,8 @@ def run_db_test():
 
     # Insert User instance into database
     try:
-        db_session.add(post)
-        db_session.commit()
+        db.session.add(post)
+        db.session.commit()
         post = Post.query.filter_by(user_id=user.id).first()
         print(post,'\n',post.title,'\n',post.detail,'\n')
         success += 1
@@ -70,7 +70,7 @@ def run_db_test():
     try:
         post.title = 'Hey'
         post.detail = 'Universe'
-        db_session.commit()
+        db.session.commit()
         print(post,'\n',post.title,'\n',post.detail,'\n')
         success += 1
     except Exception as e:
@@ -78,8 +78,8 @@ def run_db_test():
 
     # Delete instance of Post
     try:
-        db_session.delete(post)
-        db_session.commit()
+        db.session.delete(post)
+        db.session.commit()
         post = Post.query.filter_by(user_id=user.id).first()
         print(post,'\n')
         success += 1
