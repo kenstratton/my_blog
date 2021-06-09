@@ -5,7 +5,7 @@ if __name__ == "__main__" and __package__ is None:
     path.append(dir(path[0]))
     __package__ = "tests"
 
-from models.classes import User, Post
+from main.models import User, Post
 from main import db
 from main import key
 from hashlib import sha256
