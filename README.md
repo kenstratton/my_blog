@@ -78,7 +78,7 @@ Example of I/O:
 
 
 ### Test
-Test file: https://github.com/kenstratton/my_blog/blob/main/db.py
+Test file: https://github.com/kenstratton/my_blog/blob/main/db_test.py
 
 Test result: 
 
