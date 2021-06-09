@@ -22,7 +22,7 @@ class User(Base):
 
 # Post class is crafted off by and belongs to an actual user.
 class Post(Base):
-    __tablename__ = 'word'
+    __tablename__ = 'post'
 
     # Attributes
     id = Column(Integer, primary_key=True)
