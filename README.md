@@ -67,7 +67,7 @@ Their attributes of Post can be updated by inserting new data into an instance p
 <img width="690" alt="Screen Shot 2021-06-08 at 17 08 09" src="https://user-images.githubusercontent.com/77530003/121148464-c31eaf00-c87c-11eb-92f6-fc992b1932c8.png">
 
 ### User IO, and validations
-This application always provieds a user with an opportunity to input/output because it needs user requests for behaving via HTTP communication. Focusing on the sign-up behavior, there are manifest points where input and output occurs. 
+This application always provieds a user with an opportunity to input/output because it needs user requests for behaving via HTTP communication. Focusing on the sign-up behavior, there are manifest points where input and output occur. 
 
 As an example of input,  a user should experience inputing some info in a form and submit a request to sign up.
 As an example of output. a computer recieves the request with the user’s info, generates data, and transfers to the top page that indicates completion of the sign-up.
